@@ -16,6 +16,11 @@ class Traveler {
     }
 }
 
+class Doctor extends Traveler {
+
+}
+
+class Hunter class extends Traveler {}
 
 class Wagon {
     constructor(capacity) {
