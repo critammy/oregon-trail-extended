@@ -8,7 +8,7 @@ class Traveler {
         this.food += 2
     }
     eat() {
-        if (this.food = 0) {
+        if (this.food === 0) {
             this.isHealthy = false
         } else {
             this.food -= 1
@@ -17,37 +17,39 @@ class Traveler {
 }
 
 class Doctor extends Traveler {
-    constructor(name, food, heal) {
-        super(name, food)
-        this.heal = heal
+    constructor(name, food, isHealthy) {
+        super(name, food, isHealthy)
     }
     heal(traveler) {
         return traveler.isHealthy = true
     }
 
-
 }
 
 class Hunter extends Traveler {
-    constructor(name, food, giveFood) {
-        super(name, food)
-        this.giveFood = 2
+    constructor(name, food = 2, isHealthy) {
+        super(name, isHealthy)
+        this.food = food
     }
     hunt() {
-        this.food += 5
+        return this.food += 5
     }
 
     eat() {
-        if (this.food <= 1) {
-            this.Healthy = false
+        if (this.food < 2) {
+            this.food = 0
+            this.isHealthy = false
         } else {
-            this.eat -= 2
+            this.food -= 2
         }
+        return this.food
     }
     giveFood(traveler, numFoodUnits) {
-        if (numFoodUnits >= this.food) {
+        if (this.food - numFoodUnits > 0) {
             this.food -= numFoodUnits
-            Traveler.food += numFoodUnits
+            traveler.food += numFoodUnits
+        } else {
+           return 'Not enough food'
         }
 
     }
@@ -55,7 +57,7 @@ class Hunter extends Traveler {
 
 class Wagon {
     constructor(capacity) {
-        this.capacity = 4
+        this.capacity = capacity
         this.passengers = []
     }
     getAvailableSeatCount() {
